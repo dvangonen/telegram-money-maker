@@ -7,8 +7,9 @@
   "scripts": {
     "postbuild": "cp -r public/* dist",
     "build": "node esbuild.config.mjs",
-    "prestart": "npm run build && cp .env dist",
+    "prestart": "npm run build && touch .env && cp .env dist",
     "start": "node --env-file=.env dist/index.js",
+    "predev": "touch .env.development",
     "dev": "tsx --watch --env-file=.env.development src/index.ts",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
