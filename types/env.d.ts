@@ -1,7 +1,14 @@
 // Define types for process.env
-// This file is necessary to avoid TypeScript errors when using process.env
-namespace NodeJS {
-	interface ProcessEnv {
-		MY_API_KEY: string
+
+import TelegramBot from 'node-telegram-bot-api';
+
+declare global {
+	var bot: TelegramBot;
+
+	namespace NodeJS {
+		interface ProcessEnv {
+			BOT_ID: string;
+			CHAT_ID: string;
+		}
 	}
 }
