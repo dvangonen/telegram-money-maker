@@ -8,7 +8,7 @@ export async function getRandomGif(search?: string): Promise<string | null> {
 		const tag = search ? '&' + new URLSearchParams(`tag=${search}`).toString() : ''; // `tag=funny+cat+gif` for example
 
 		const response = await fetch(
-			`https://api.giphy.com/v1/gifs/random?api_key=${process.env.GIPHY_API}${tag}&rating=g`,
+			`https://api.giphy.com/v1/gifs/random?api_key=${process.env.GIPHY_TOKEN}${tag}&rating=g`,
 		);
 
 		if (!response.ok) {

@@ -1,74 +1,45 @@
-# Best Node Boilerplate
+# Telegram Money Maker
 
-![t](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
-![tsc](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)
-
-Just start your Node.js project in a seconds.
+## Description
+Telegram Money Maker is a project designed to automate and optimize your earnings through Telegram.
+This tool helps you manage and monetize your Telegram channels and groups efficiently.
 
 ## Features
+- Automated message posting
+- Analytics and reporting
+- User management
+- Monetization tools
 
-- **ESLint**: Linting for maintaining code quality.
-- **Prettier**: Code formatting for a consistent style.
-- **TypeScript**: Typed JavaScript for better development experience.
-- **Debugging**: Pre-configured debugging setup for VsCode.
-
-## Getting Started
-
-1. **Clone the repository**:
-	```sh
-	git clone https://github.com/dvangonen/best-node-boilerplate.git
-	cd best-node-boilerplate
+## Installation
+1. Clone the repository:
+	```bash
+	git clone https://github.com/yourusername/telegram-money-maker.git
 	```
-
-2. **Install dependencies**:
-	```sh
+2. Navigate to the project directory:
+	```bash
+	cd telegram-money-maker
+	```
+3. Install the dependencies:
+	```bash
 	pnpm install
 	```
 
-3. **Run the development server**:
-	```sh
-	npm run dev
+## Usage
+1. Obtain your Telegram Bot ID by creating a new bot through the [BotFather](https://core.telegram.org/bots#botfather) on Telegram.
+2. Get your Giphy ID by signing up for an API key on the [Giphy Developers](https://developers.giphy.com/) website.
+3. Create a `.env` and `.env.development` files in the project directory with the following content:
+	```
+	TELEGRAM_BOT_ID=your-telegram-bot-id
+	GIPHY_TOKEN=your-giphy-id
+	TELEGRAM_CHAT_ID=your-telegram-chat-id
+	```
+4. Run the application:
+	```bash
+	npm start
 	```
 
-## Scripts
-
-- `npm run dev`: Start the development server.
-- `npm run build`: Build the project for production.
-- `npm run lint`: Run ESLint.
-- `npm run format`: Run Prettier.
-
-## Deployment
-
-To deploy the project, you can use the provided `deploy.sh` script.
-
-It is a very simple and easy-to-use approach. But maybe I will add a Dockerfile approach soon.
-
-### Steps to Deploy
-1. Run the `deploy.sh` script.
-
-This script will build the project using `esbuild`. So the output will be as tiny as possible.
-Then it copy the contents of the `dist` folder, and push it to the `deploy` branch of your repository.
-
-```
-chmod +x deploy.sh
-./deploy.sh
-```
-
-
-2. Then you can `fetch` the content of `deploy` branch on your own server.
-
-This will download a pre-built and minified version of your code.
-
-```
-git clone [your-repo-url] -b deploy --single-branch
-```
-
-3. Just start it with `node` on your server
-
-```
-npm start
-```
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## License
-
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

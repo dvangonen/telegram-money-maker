@@ -7,8 +7,8 @@ declare global {
 
 	namespace NodeJS {
 		interface ProcessEnv {
-			BOT_ID: string;
-			CHAT_ID: string;
+			TELEGRAM_BOT_ID: string;
+			TELEGRAM_CHAT_ID: string;
 		}
 	}
 }

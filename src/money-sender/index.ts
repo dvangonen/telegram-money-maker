@@ -39,7 +39,7 @@ export class MoneySender {
 			return;
 		}
 
-		bot.sendAnimation(process.env.CHAT_ID, url, {
+		bot.sendAnimation(process.env.TELEGRAM_CHAT_ID, url, {
 			caption: text,
 		});
 	}
