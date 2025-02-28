@@ -1,19 +1,18 @@
 import { getRandomGif } from '@/api/getRandomGif';
 import { schedule } from 'node-cron';
 
+/**
+ * This is a service that sends money GIFs to the chat every minute.
+ */
 export class MoneySender {
 	constructor() {}
 
 	public start() {
-		schedule(
-			'0/30 0 * * * *',
-			() => {
-				this.sendMessage();
-			},
-			{
-				runOnInit: true,
-			},
-		);
+		const job = schedule('* * * * *', () => {
+			this.sendMessage();
+		});
+
+		job.start();
 	}
 
 	private getRandomText() {
