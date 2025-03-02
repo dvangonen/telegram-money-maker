@@ -1,7 +1,6 @@
 import { fetchRandomGif } from '@/api/giphy/fetch-random-gif';
 import { schedule } from 'node-cron';
 import { MONEY_AFFIRMATIONS } from './consts/money-affirmations';
-import { MONEY_EMOJIS } from './consts/money-emojis';
 import { sendAnimation } from '@/api/telegram-bot/send-animation';
 
 const MONEY_QUERY = 'funny cat';
@@ -13,15 +12,9 @@ export class MoneySenderService {
 	constructor() {}
 
 	public start() {
-		const job = schedule(
-			'* * * * *',
-			() => {
-				this.sendMessage();
-			},
-			{
-				runOnInit: true,
-			},
-		);
+		const job = schedule('0 * * * *', () => {
+			this.sendMessage();
+		});
 
 		job.start();
 	}
@@ -30,16 +23,11 @@ export class MoneySenderService {
 		return MONEY_AFFIRMATIONS[Math.floor(Math.random() * MONEY_AFFIRMATIONS.length)];
 	}
 
-	private getRandomEmoji() {
-		return MONEY_EMOJIS[Math.floor(Math.random() * MONEY_EMOJIS.length)];
-	}
-
 	private async sendMessage() {
 		const url = await fetchRandomGif(MONEY_QUERY);
 
-		const emoji = this.getRandomEmoji();
 		const text = this.getRandomAffirmation();
-		const caption = Math.floor(Math.random() * 4) % 2 === 0 ? `${text} ${emoji}` : '';
+		const caption = Math.floor(Math.random() * 5) % 2 === 0 ? text : '';
 
 		if (!url) {
 			console.error('Error fetching GIF');
