@@ -1,9 +1,11 @@
+import { GiphyResponse } from './types';
+
 /**
  * Fetch a random GIF from Giphy API.
  * @param search - The search query to find a GIF.
  * @returns The URL of the GIF if successful, otherwise null.
  */
-export async function getRandomGif(search?: string): Promise<string | null> {
+export async function fetchRandomGif(search?: string): Promise<string | null> {
 	try {
 		const tag = search ? '&' + new URLSearchParams(`tag=${search}`).toString() : ''; // `tag=funny+cat+gif` for example
 
@@ -15,7 +17,7 @@ export async function getRandomGif(search?: string): Promise<string | null> {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
 
-		const data = await response.json();
+		const data: GiphyResponse = await response.json();
 		return data.data.images.original.url; // URL of the GIF
 	} catch (error) {
 		console.error('Error fetching GIF:', error);
