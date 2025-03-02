@@ -3,9 +3,8 @@ import { schedule } from 'node-cron';
 import { MONEY_AFFIRMATIONS } from './consts/money-affirmations';
 import { MONEY_EMOJIS } from './consts/money-emojis';
 import { sendAnimation } from '@/api/telegram-bot/send-animation';
-import { sendMessage } from '@/api/telegram-bot/send-message';
 
-const MONEY_QUERY = 'money cash';
+const MONEY_QUERY = 'funny cat';
 
 /**
  * This is a service that sends money GIFs to the chat every minute.
@@ -40,7 +39,7 @@ export class MoneySenderService {
 
 		const emoji = this.getRandomEmoji();
 		const text = this.getRandomAffirmation();
-		const caption = `${text} ${emoji}`;
+		const caption = Math.floor(Math.random() * 4) % 2 === 0 ? `${text} ${emoji}` : '';
 
 		if (!url) {
 			console.error('Error fetching GIF');
@@ -50,6 +49,5 @@ export class MoneySenderService {
 		sendAnimation(url, {
 			caption,
 		});
-		sendMessage(caption);
 	}
 }
