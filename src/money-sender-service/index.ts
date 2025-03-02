@@ -2,6 +2,8 @@ import { fetchRandomGif } from '@/api/giphy/fetch-random-gif';
 import { schedule } from 'node-cron';
 import { MONEY_AFFIRMATIONS } from './consts/money-affirmations';
 import { MONEY_EMOJIS } from './consts/money-emojis';
+import { sendAnimation } from '@/api/telegram-bot/send-animation';
+import { sendMessage } from '@/api/telegram-bot/send-message';
 
 const MONEY_QUERY = 'money cash';
 
@@ -45,8 +47,9 @@ export class MoneySenderService {
 			return;
 		}
 
-		bot.sendAnimation(process.env.TELEGRAM_CHAT_ID, url, {
+		sendAnimation(url, {
 			caption,
 		});
+		sendMessage(caption);
 	}
 }
