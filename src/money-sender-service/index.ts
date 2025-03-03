@@ -12,7 +12,7 @@ export class MoneySenderService {
 	constructor() {}
 
 	public start() {
-		const job = schedule('0 */2 * * *', () => {
+		const job = schedule('0 */6 * * *', () => {
 			this.sendMessage();
 		});
 
